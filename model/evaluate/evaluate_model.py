@@ -72,4 +72,5 @@ for i in ax1.patches:
 
 # Show the plot
 plt.tight_layout()
+plt.savefig('result_files/accuracyResults.png')
 plt.show()

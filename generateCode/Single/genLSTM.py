@@ -8,12 +8,10 @@ def generate_code(model, tokenizer, seed_text, max_length):
     generated_code = seed_text
 
     for _ in range(max_length):
-        # Ensure the padded sequence length matches the model's expected input length
         token_list_padded = pad_sequences([token_list], maxlen=max_length, padding='pre')
         predicted = np.argmax(model.predict(token_list_padded), axis=-1)
         predicted_index = predicted[0]
 
-        # Check if the predicted token index is in the tokenizer's word index
         if predicted_index in tokenizer.index_word:
             output_word = tokenizer.index_word[predicted_index]
             token_list.append(predicted_index)
